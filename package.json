@@ -1,0 +1,48 @@
+{
+  "name": "statusinvest",
+  "version": "0.0.1",
+  "description": "StatusInvest's stocks info web scraper",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lfreneda/statusinvest.git"
+  },
+  "keywords": [
+    "statusinvest",
+    "statusinvest.com.br",
+    "stocks",
+    "acoes",
+    "ibovespa",
+    "bovespa",
+    "cotacao",
+    "investing",
+    "investimentos",
+    "bvmf",
+    "price",
+    "bolsa"
+  ],
+  "author": "Luiz Freneda <lfreneda@gmail.com>",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/lfreneda/statusinvest/issues"
+  },
+  "homepage": "https://github.com/lfreneda/statusinvest#readme",
+  "dependencies": {
+    "axios": "0.21.1",
+    "promised-cache": "1.1.2",
+    "underscore": "1.13.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0"
+  }
+}
