@@ -22,6 +22,13 @@
 :exclamation: | WIP: Working in progress and we need you, pull requests are welcome.
 ---: | :---
 
+:pray: | Pô pessoal da StatusInvest, libera uma API pra a gente pls ;__;
+---: | :---
+
+<div align="center">
+  <img height="30px" src=".github/static/separator.png"/>
+</div>
+
 ## Installation
 
 This client is intended for server side use only.
