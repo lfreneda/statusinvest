@@ -7,10 +7,11 @@
   </p>
   <p>
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/c4c8c5621ca66693196f/maintainability)](https://codeclimate.com/github/lfreneda/statusinvest/maintainability)
 
   </p>
   <small>
-    Built with ❤ by 
+    Built with ❤  by 
       <a href="https://github.com/lfreneda">Luiz Freneda</a> and
       <a href="https://github.com/lfreneda/statusinvest/graphs/contributors">contributors</a> - <a href="https://fieldcontrol.com.br/vaga-para-desenvolvedor.html?utm_source=github&utm_medium=opensource&utm_campaign=contaazul">Estou contratando desenvolvedores JavaScript</a>
   </small>

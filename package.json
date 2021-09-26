@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"test\""
+    "test": "npx jest --verbose",
+    "lint": "npx eslint src/ --fix",
+    "coverage": "npm test"
   },
   "repository": {
     "type": "git",
