@@ -37,6 +37,8 @@
   "homepage": "https://github.com/lfreneda/statusinvest#readme",
   "dependencies": {
     "axios": "0.21.1",
+    "moment": "^2.29.1",
+    "node-localdb": "0.0.3",
     "promised-cache": "1.1.2",
     "underscore": "1.13.1"
   },
