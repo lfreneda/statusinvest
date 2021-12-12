@@ -9,12 +9,18 @@ const run = async () => {
     const stockHistoricalInfo = await statusInvest.getStockHistoricalInfo({
       ticker: stock.Ativo
     })
+    console.log(`Getting ${stock.Ativo}'s page info`)
+    const stockPageInfo = await statusInvest.getStockPageInfo({
+      ticker: stock.Ativo
+    })
     const existingStockHistoricalInfo = await db.findOne({ Ativo: stock.Ativo })
     if (existingStockHistoricalInfo) {
       await db.remove({ Ativo: stock.Ativo })
     }
     await db.insert({
       Ativo: stock.Ativo,
+      ...stock,
+      ...stockPageInfo,
       Indicadores: {
         ...stockHistoricalInfo
       },
