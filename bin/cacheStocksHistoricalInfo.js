@@ -1,4 +1,4 @@
-const db = require('node-localdb')('db/stocks-historial-indicators.json')
+const db = require('node-localdb')('stocks-indicators.json')
 const statusInvest = require('../src/index')
 const moment = require('moment')
 
@@ -13,10 +13,14 @@ const run = async () => {
     const stockPageInfo = await statusInvest.getStockPageInfo({
       ticker: stock.Ativo
     })
-    const existingStockHistoricalInfo = await db.findOne({ Ativo: stock.Ativo })
-    if (existingStockHistoricalInfo) {
-      await db.remove({ Ativo: stock.Ativo })
-    }
+    console.log({
+      Ativo: stock.Ativo,
+      Indicadores: {
+        ...stockHistoricalInfo
+      },
+      ...stockPageInfo,
+      AtualizadoEm: moment.utc().format()
+    })
     await db.insert({
       Ativo: stock.Ativo,
       ...stock,
@@ -26,7 +30,7 @@ const run = async () => {
       },
       AtualizadoEm: moment.utc().format()
     })
-    console.log(`Cached ${stock.Ativo}'s historial indicators`)
+    console.log(`Cached ${stock.Ativo}'s infos`)
   }
 }
 

@@ -10,8 +10,10 @@ const run = async () => {
   // })
   // console.log(JSON.stringify(stockHistoricalInfo, null, 2))
 
-  const stockPageInfo = await statusInvest.getStockPageInfo({ ticker: 'taee4' })
-  console.log('stockPageInfo', stockPageInfo)
+  const stocks = await statusInvest.cache.getStocksInfo()
+  for (const stock of stocks) {
+    console.log(stock)
+  }
 }
 
 run()

@@ -1,4 +1,5 @@
 const axios = require('axios')
+const cache = require('./cache')
 const fetch = require('node-fetch')
 const iconv = require('iconv-lite')
 const { indexBy } = require('underscore')
@@ -54,6 +55,7 @@ const getStockPageInfo = async ({ ticker }) => {
 }
 
 module.exports = {
+  cache,
   getStocksInfo,
   getStockPageInfo,
   getStockHistoricalInfo
