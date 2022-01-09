@@ -45,13 +45,12 @@ const getStockPageInfo = async ({ ticker }) => {
   const response = await fetch(`https://statusinvest.com.br/acoes/${ticker}`, {
     headers: {
       accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-      'accept-language': 'en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7,es-MX;q=0.6,es;q=0.5'
+      'accept-language': 'en,en-US;q=0.9,pt-BR;q=0.8,pt;q=0.7,es-MX;q=0.6,es;q=0.5'
     }
   })
   const responseBuffer = await response.buffer()
-  const decodedBuffer = iconv.decode(responseBuffer, 'latin1')
-  const responseHtml = iconv.encode(decodedBuffer, 'utf8').toString('utf8')
-  return toReadableStockPageInfo(responseHtml)
+  const html = iconv.encode(responseBuffer, 'utf8').toString('utf8')
+  return toReadableStockPageInfo(html)
 }
 
 module.exports = {

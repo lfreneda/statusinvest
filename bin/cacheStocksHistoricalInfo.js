@@ -1,4 +1,4 @@
-const db = require('node-localdb')('stocks-indicators.json')
+const db = require('node-localdb')('stocks.json')
 const statusInvest = require('../src/index')
 const moment = require('moment')
 
