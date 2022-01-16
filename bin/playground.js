@@ -14,8 +14,7 @@ const run = async () => {
   // for (const stock of stocks) {
   //   console.log(stock)
   // }
-
-  const info = await statusInvest.getStockPageInfo({ ticker: 'MEAL3' })
+  const info = await statusInvest.getStockPageInfo({ ticker: 'TRPL4' })
   console.log(info)
 }
 

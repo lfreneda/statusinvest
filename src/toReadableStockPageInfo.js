@@ -1,4 +1,5 @@
 const cheerio = require('cheerio')
+const moment = require('moment')
 
 const getSectorSubSectorAndSegmentInfo = ({ html, stockInfo }) => {
   const $ = cheerio.load(html)
@@ -46,12 +47,11 @@ const getCompanyGeneralInfo = ({ html, stockInfo }) => {
   }
 }
 
-const getInvestorsInfo = ({ html, stockInfo }) => {
+const getInvestorsTableInfo = ({ html, stockInfo }) => {
   const $ = cheerio.load(html)
   const input = $('#posicaoacionaria input#results')
   const investors = JSON.parse(input.val())
-  stockInfo.Investors = investors.map((investor) => {
-    console.log(investor)
+  stockInfo.Investidores = investors.map((investor) => {
     for (const key of Object.keys(investor)) {
       investor[key] = tryParseFloatBrStyle(investor[key])
     }
@@ -69,6 +69,21 @@ const getInvestorsInfo = ({ html, stockInfo }) => {
       QuantidadeOrdinarias: investor.QuantidadeOrdinarias,
       QuantidadePreferencial: investor.QuantidadePreferencial,
       QuantidadeTotal: investor.QuantidadeTotal
+    }
+  })
+}
+
+const getEarningsTableInfo = ({ html, stockInfo }) => {
+  const $ = cheerio.load(html)
+  const input = $('#earning-section input#results')
+  const earnings = JSON.parse(input.val())
+  stockInfo.Proventos = earnings.map((earning) => {
+    return {
+      Tipo: earning.et,
+      ValorOriginal: earning.v,
+      ValorEventoDesdobramentoAgrupamento: earning.ov || earning.v,
+      DataCom: moment(earning.ed, 'DD/MM/YYYY').format('YYYY-MM-DD'),
+      DataPagamento: moment(earning.pd, 'DD/MM/YYYY').format('YYYY-MM-DD')
     }
   })
 }
@@ -106,7 +121,8 @@ const toReadableStockPageInfo = (html) => {
   const stockInfo = {}
   getSectorSubSectorAndSegmentInfo({ html, stockInfo })
   getCompanyGeneralInfo({ html, stockInfo })
-  getInvestorsInfo({ html, stockInfo })
+  getInvestorsTableInfo({ html, stockInfo })
+  getEarningsTableInfo({ html, stockInfo })
   return stockInfo
 }
 module.exports = toReadableStockPageInfo
