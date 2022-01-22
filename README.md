@@ -22,7 +22,7 @@
 :exclamation: | WIP: Working in progress and we need you, pull requests are welcome.
 ---: | :---
 
-:pray: | Pô pessoal da StatusInvest, libera uma API pra a gente pls ;__;
+:pray: | StatusInvest, libera uma API pra a gente plmdds 💙 (mesmo que seja no plano bull)
 ---: | :---
 
 <div align="center">

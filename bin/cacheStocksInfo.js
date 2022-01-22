@@ -1,5 +1,5 @@
-const BRDb = require('node-localdb')('stocks.json')
-const EUADb = require('node-localdb')('stocks.json')
+const BRDb = require('node-localdb')('stocks-br.json')
+const EUADb = require('node-localdb')('stocks-eua.json')
 const statusInvest = require('../src/index')
 const moment = require('moment')
 
