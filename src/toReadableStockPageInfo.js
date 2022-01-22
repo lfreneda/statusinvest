@@ -5,17 +5,33 @@ const getSectorSubSectorAndSegmentInfo = ({ html, stockInfo }) => {
   const $ = cheerio.load(html)
   const links = $('a.white-text')
   for (const link of links) {
-    const isSectorLink = link.attribs.href && link.attribs.title.includes('Ver outras empresas do setor')
+    const isSectorLink = link.attribs.href && link.attribs.title && link.attribs.title.includes('Ver outras empresas do setor')
     if (isSectorLink) {
       stockInfo.Setor = $(link).find('strong').text()
     }
-    const isSubSectorLink = link.attribs.href && link.attribs.title.includes('Ver outras empresas do subsetor')
+    const isSubSectorLink = link.attribs.href && link.attribs.title && link.attribs.title.includes('Ver outras empresas do subsetor')
     if (isSubSectorLink) {
       stockInfo.SubSetor = $(link).find('strong').text()
     }
-    const isSegmentLink = link.attribs.href && link.attribs.title.includes('Ver outras empresas do segmento')
+    const isSegmentLink = link.attribs.href && link.attribs.title && link.attribs.title.includes('Ver outras empresas do segmento')
     if (isSegmentLink) {
       stockInfo.Segmento = $(link).find('strong').text()
+    }
+  }
+  const spans = $('span.sub-value')
+  for (const span of spans) {
+    const spanText = $(span).text()
+    if (spanText === 'SETOR DE ATUAÇÃO') {
+      const strong = $(span.parentNode).find('a strong.value')
+      stockInfo.Setor = $(strong).text()
+    }
+    if (spanText === 'SUBSETOR DE ATUAÇÃO') {
+      const strong = $(span.parentNode).find('a strong.value')
+      stockInfo.SubSetor = $(strong).text()
+    }
+    if (spanText === 'SEGMENTO DE ATUAÇÃO') {
+      const strong = $(span.parentNode).find('a strong.value')
+      stockInfo.Segmento = $(strong).text()
     }
   }
 }
@@ -50,7 +66,10 @@ const getCompanyGeneralInfo = ({ html, stockInfo }) => {
 const getInvestorsTableInfo = ({ html, stockInfo }) => {
   const $ = cheerio.load(html)
   const input = $('#posicaoacionaria input#results')
-  const investors = JSON.parse(input.val())
+  if (!input) { return null }
+  const inputValue = input.val()
+  if (!inputValue) { return null }
+  const investors = JSON.parse(inputValue)
   stockInfo.Investidores = investors.map((investor) => {
     for (const key of Object.keys(investor)) {
       investor[key] = tryParseFloatBrStyle(investor[key])
