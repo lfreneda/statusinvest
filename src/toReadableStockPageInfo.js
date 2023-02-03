@@ -51,7 +51,8 @@ const getCompanyGeneralInfo = ({ html, stockInfo }) => {
     'Dívida líquida',
     'Valor de mercado',
     'Valor de firma',
-    'Segmento de listagem'
+    'Segmento de listagem',
+    'Tipo',
   ]
   const divs = $('div.top-info div.info div div')
   for (const div of divs) {
