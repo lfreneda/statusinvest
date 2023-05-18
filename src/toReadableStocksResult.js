@@ -13,7 +13,7 @@ const toReadableStocksResult = (statusInvestStock) => {
     'P/ACL': statusInvestStock.p_AtivoCirculante,
     'EV/EBIT': statusInvestStock.eV_Ebit,
     'Margem Ebit': statusInvestStock.margemEbit,
-    'Margem Líquida': statusInvestStock.mxargemLiquida,
+    'Margem Líquida': statusInvestStock.margemLiquida,
     'Liquidez Corrente': statusInvestStock.liquidezCorrente,
     ROIC: statusInvestStock.roic,
     ROE: statusInvestStock.roe,
